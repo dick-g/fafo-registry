@@ -1,0 +1,179 @@
+# FAFO Invariants
+# Rules that are always true. If generated content contradicts a line
+# here, the content is wrong — not the invariant.
+
+meta:
+  version: "0.1"
+  updated: 2026-07-28
+  engine: pathfinder_1e
+  rule: >
+    PF1e is the sole mechanical engine. Storyteller supplies lore.
+    Where lore and PF1e conflict, lore wins and PF1e is the chassis. (CORE-001)
+
+# --- HARD CEILINGS ---
+ceilings:
+  single_instance_damage: 5d6
+  max_range_ft: 26400          # 5 miles, Rank 5
+  numina_dots: 5
+  true_faith_plus_divine_class: 5   # combined cap
+  humanity: 10
+  vinculum: 3
+  garou_rank: 5
+  tier: 8
+
+# --- RESOURCE ECONOMY ---
+resources:
+  doctrine: single_resource
+  hybrid_pools: forbidden
+  dual_resource_costs: forbidden
+  rage:
+    scope: scene
+    formula: "2 + tier"
+    persists: false
+  gnosis:
+    scope: persistent
+    range: [4, 30]
+    scales_with: tier
+    recovery: full_after_rest
+  willpower:
+    equals: hero_points        # 1:1, interchangeable (E8, ratified by C1)
+    pool: "3 + highest_mental_modifier"
+    spends:
+      - reroll_d20_keep_second
+      - suppress_mind_affecting_1_round
+    reroll_applies_everywhere: true   # no Beast carve-out (C1)
+  numina_willpower:
+    formula: "wis_mod + floor(level/2)"
+    minimum: 3
+    note: separate pool from hero points (WP-003)
+  spp:
+    per_level: tier
+    dot_costs_in_clan: [2, 4, 6, 8, 10]
+    out_of_clan_multiplier: 1.5   # rounded up
+    banking: allowed              # Temptation Economy
+  renown:
+    mechanical: false
+    note: NEVER a tracked currency. Narrative and social only. (GR-004)
+
+# --- DC FORMULAS ---
+formulas:
+  gift_dc: "10 + rank + key_ability_mod"     # 11/12/13/14/15 + mod
+  rite_dc_rank_1_3: "12 + (3 * rank)"        # 15/18/21
+  rite_dc_rank_4: 24
+  rite_dc_rank_5: 27
+  rite_check: "1d20 + character_level + wis_or_cha_mod + skill"
+  true_faith_dc: "10 + cha_mod + faith_dots"
+  degeneration_dc: "10 + sin_severity"
+  degeneration_check: "1d20 + will_save + conscience_mod"
+  blood_bond_resist_dc: "14 + (4 * vinculum)"   # 18/22/26
+  humanity_social_penalty: "7 - humanity"        # applies at humanity <= 6
+  humanity_daytime_penalty: "10 - humanity"
+  virtue_modifier: "rating - 1"
+
+# --- STATIC DC LADDER ---
+# House standard. Used for Frenzy, Rotschreck, driving, intrusion, stunts.
+static_ladder:
+  minor: 15
+  moderate: 18
+  major: 21
+  severe: 24
+static_dc_doctrine:
+  scales_with_level: false
+  scales_with_hd: false
+  scales_with_tier: false
+  note: "The Beast does not respect power. (CORE-005)"
+
+fixed_dcs:
+  delirium: 16
+  humanity_regain_wis_check: 15      # once per story arc
+  blood_bond_decay_will: 22          # per clean month
+  torpor_recovery_stepdown: 15       # per minute, Rotschreck recovery
+
+# --- SAVE MODIFIERS (C4) ---
+virtue_applications:
+  frenzy_save: self_control
+  rotschreck_save: courage
+  degeneration_check: conscience
+virtues:
+  rated: true
+  fixed_at_creation: true
+  purchasable: false
+  changed_only_by: gm_ruling_after_chronicle_defining_event
+
+# --- BOTCH ---
+botch:
+  standard: "natural 1, or failure by 10+"
+  degeneration_derangement_threshold: "failure by 5+"
+
+# --- DAMAGE & HEALING ---
+healing:
+  blood_point_to_hp: 3
+  aggravated_at_rest_per_day: 1
+  aggravated_in_torpor_per_bp_per_day: 3
+  aggravated_push_through_per_week: 3    # costs 1 permanent willpower
+  garou_regeneration_per_round: "2 + rank"   # shifted forms only
+  garou_homid_heal: "1 gnosis = 1d8 + tier hp, swift action"
+
+silver:
+  aggravated: true
+  bypasses_dr: true
+  suppresses_regeneration: "1 round following the hit"
+  quote_verbatim: true
+  source: GR-045
+
+death:
+  thresholds: pf1e_standard      # negative CON
+  wound_tracks: false
+  health_levels: false
+  torpor_trigger: "0 hp from lethal or bashing"
+  final_death_trigger: "0 hp from aggravated"
+
+# --- COMBAT (modern) ---
+combat:
+  firearms_target: normal_ac       # touch-AC rule NOT used
+  misfires: false
+  magazine_reload: free_action
+  tube_or_cylinder_reload: move_action
+  armor: ac_only                   # baseline; DR is an optional module
+  blunt_trauma: optional_module_only
+  damage_anchor:
+    9mm: "1d6 / 20 ft"
+    scoped_rifle: "1d10 / 80 ft"
+
+# --- BONUS DISCIPLINE ---
+bonuses:
+  must_be_typed: true
+  default_type: circumstance
+  untyped_scaling_bonuses: forbidden
+
+# --- NAMING & STRUCTURE ---
+naming:
+  unique_names_required: true
+  scope: entire_corpus
+  applies_to: [gifts, rites, abilities]
+
+skills:
+  new_skills_allowed: false
+  sanctioned_exceptions:
+    - name: Computer
+      ability: INT
+      ruling: PV-008
+      precedential: false
+  bar_for_future_proposals: "load-bearing for the setting, or nothing"
+
+progression:
+  axes: [character_level, tier]
+  independent: true               # Two-Axis Doctrine
+  garou_rank_cap: "rank <= tier"  # GR-001
+  discipline_tier_floors:
+    dots_1_2: 4
+    dot_3: 5
+    dot_4: 6
+    dot_5: 7
+
+# --- SUPERSESSION ---
+supersession:
+  rule: >
+    Where a dedicated subsystem document exists, it is master.
+    Other documents point to it rather than restating mechanics. (CORE-006)
+  superseded_versions_go_to: archive   # CORE-007
