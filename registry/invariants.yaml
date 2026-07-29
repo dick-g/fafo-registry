@@ -1,7 +1,6 @@
 # FAFO Invariants
 # Rules that are always true. If generated content contradicts a line
 # here, the content is wrong — not the invariant.
-
 meta:
   version: "0.2"
   updated: 2026-07-29
@@ -9,7 +8,6 @@ meta:
   rule: >
     PF1e is the sole mechanical engine. Storyteller supplies lore.
     Where lore and PF1e conflict, lore wins and PF1e is the chassis. (CORE-001)
-
 # --- WHAT FAFO DOES NOT HAVE ---
 # These exist to catch clauses that read correctly because they are true
 # in a SOURCE system (Storyteller, or baseline PF1e) while meaning nothing
@@ -19,13 +17,13 @@ absent_systems:
   wound_penalties:
     present: false
     note: >
-      Losing HP imposes no automatic penalty (Physical States v1.2 §1).
+      Losing HP imposes no automatic penalty (Physical States v1.2 section 1).
       "Ignores wound penalties" grants nothing. Storyteller has them; FAFO does not.
   health_levels:
     present: false
     note: >
       All injury is denominated in Hit Points. Declared corpus-wide in
-      Physical States v1.2 §1. Any "health level" phrasing is an error.
+      Physical States v1.2 section 1. Any "health level" phrasing is an error.
   wound_tracks:
     present: false
   disabled_state_at_0_hp:
@@ -33,7 +31,7 @@ absent_systems:
     note: >
       Baseline PF1e treats 0 HP as Disabled. FAFO overrides this — 0 HP or
       lower from lethal/bashing is Torpor. The sole exception is a character
-      in Frenzy, who acts as though Disabled at exactly 0 HP (XL-03 §2).
+      in Frenzy, who acts as though Disabled at exactly 0 HP (XL-03 section 2).
       "Gains Diehard at 0 HP" is null outside that exception.
   massive_damage_threshold:
     present: false
@@ -53,7 +51,6 @@ absent_systems:
   renown_as_currency:
     present: false
     note: Renown is narrative and social only. (GR-004)
-
 # --- HARD CEILINGS ---
 ceilings:
   single_instance_damage: 5d6
@@ -64,7 +61,6 @@ ceilings:
   vinculum: 3
   garou_rank: 5
   tier: 8
-
 # --- RESOURCE ECONOMY ---
 resources:
   doctrine: single_resource
@@ -106,7 +102,6 @@ resources:
     banking: allowed
   renown:
     mechanical: false
-
 # --- DC FORMULAS ---
 formulas:
   gift_dc: "10 + rank + key_ability_mod"
@@ -124,7 +119,6 @@ formulas:
   humanity_social_penalty: "7 - humanity"
   humanity_daytime_penalty: "10 - humanity"
   virtue_modifier: "rating - 1"
-
 # --- STATIC DC LADDER ---
 static_ladder:
   minor: 15
@@ -141,14 +135,12 @@ uses_static_ladder:
   - rotschreck_stimulus
   - driving_under_pressure
   - computer_intrusion
-
 fixed_dcs:
   delirium: 16
   humanity_regain_wis_check: 15
   blood_bond_decay_will: 22
   rotschreck_recovery_stepdown: 15
   torpor_exit: "1 hp, or one full hit die if aggravated"
-
 # --- SAVE MODIFIERS (C4) ---
 virtue_applications:
   frenzy_save: self_control
@@ -159,11 +151,9 @@ virtues:
   rated: true
   fixed_at_creation: true
   purchasable: false
-
 botch:
   standard: "natural 1, or failure by 10+"
   degeneration_derangement_threshold: "failure by 5+"
-
 # --- DAMAGE, HEALING, DEATH ---
 healing:
   blood_point_to_hp: 3
@@ -172,18 +162,16 @@ healing:
   aggravated_push_through_per_week: 3
   garou_regeneration_per_round: "2 + rank"
   garou_homid_heal: "1 gnosis = 1d8 + tier hp, swift action"
-
 silver:
   aggravated: true
   bypasses_dr: true
   suppresses_regeneration: "1 round following the hit"
   quote_verbatim: true
   source: GR-045
-
 death:
   thresholds: pf1e_standard
   torpor_trigger: "0 hp or lower from lethal or bashing"
-  torpor_trigger_in_frenzy: "below 0 hp"     # XL-03 §2, one step only
+  torpor_trigger_in_frenzy: "below 0 hp"
   final_death_trigger: "0 hp from aggravated"
   aggravated_has_no_survival_window: true
   ferocity:
@@ -196,7 +184,6 @@ death:
   stake:
     condition: "Paralyzed (Heart-Staked)"
     bypasses: [frenzy, ferocity]
-
 frenzy:
   is_a_combat_enhancer: partial
   melee_attack_and_damage: "+2 circumstance"
@@ -204,7 +191,6 @@ frenzy:
   ranged_bonus: none
   strength_bonus: none
   grants_ferocity: false
-
 # --- COMBAT (modern) ---
 combat:
   firearms_target: normal_ac
@@ -216,7 +202,6 @@ combat:
   damage_anchor:
     9mm: "1d6 / 20 ft"
     scoped_rifle: "1d10 / 80 ft"
-
 # --- BONUS DISCIPLINE ---
 bonuses:
   must_be_typed: true
@@ -228,13 +213,11 @@ penalties:
     PF1e penalties are untyped by convention and do not stack from
     identical sources. Brujah −2, Gangrel social, and Hunger penalties
     are correctly untyped. Do not flag these.
-
 # --- NAMING & STRUCTURE ---
 naming:
   unique_names_required: true
   scope: entire_corpus
   applies_to: [gifts, rites, abilities, traits]
-
 skills:
   new_skills_allowed: false
   sanctioned_exceptions:
@@ -247,7 +230,6 @@ skills:
     ruling: PV-007
     is_a_skill: false
     resolves_as: "dexterity check vs static ladder; Profession (driver) may substitute"
-
 progression:
   axes: [character_level, tier]
   independent: true
@@ -257,7 +239,6 @@ progression:
     dot_3: 5
     dot_4: 6
     dot_5: 7
-
 supersession:
   rule: >
     Where a dedicated subsystem document exists, it is master.
