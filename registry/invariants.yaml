@@ -1,66 +1,56 @@
 # FAFO Invariants
 # Rules that are always true. If generated content contradicts a line
 # here, the content is wrong — not the invariant.
+
 meta:
-  version: "0.2"
+  version: "0.3"
   updated: 2026-07-29
   engine: pathfinder_1e
+  governing_document: master_manifesto_v1.1
   rule: >
-    PF1e is the sole mechanical engine. Storyteller supplies lore.
-    Where lore and PF1e conflict, lore wins and PF1e is the chassis. (CORE-001)
-# --- WHAT FAFO DOES NOT HAVE ---
-# These exist to catch clauses that read correctly because they are true
-# in a SOURCE system (Storyteller, or baseline PF1e) while meaning nothing
-# in FAFO. Three such clauses shipped before this section existed.
-# Flag any document that grants, removes, ignores, or modifies these.
-absent_systems:
-  wound_penalties:
-    present: false
-    note: >
-      Losing HP imposes no automatic penalty (Physical States v1.2 section 1).
-      "Ignores wound penalties" grants nothing. Storyteller has them; FAFO does not.
-  health_levels:
-    present: false
-    note: >
-      All injury is denominated in Hit Points. Declared corpus-wide in
-      Physical States v1.2 section 1. Any "health level" phrasing is an error.
-  wound_tracks:
-    present: false
-  disabled_state_at_0_hp:
-    present: false
-    note: >
-      Baseline PF1e treats 0 HP as Disabled. FAFO overrides this — 0 HP or
-      lower from lethal/bashing is Torpor. The sole exception is a character
-      in Frenzy, who acts as though Disabled at exactly 0 HP (XL-03 section 2).
-      "Gains Diehard at 0 HP" is null outside that exception.
-  massive_damage_threshold:
-    present: false
-  action_points:
-    present: false
-  wealth_bonus:
-    present: false
-    note: FAFO prices in USD. (d20 Modern subsystem, rejected)
-  defense_bonus:
-    present: false
-    note: Armor is AC. (d20 Modern subsystem, rejected)
-  background_point_pool:
-    present: false
-    note: Backgrounds are narrative descriptors. (BG-001)
-  reputation_bonus:
-    present: false
-  renown_as_currency:
-    present: false
-    note: Renown is narrative and social only. (GR-004)
+    PF1e is the sole mechanical engine. Lore (WoD) decides WHAT exists in the
+    setting; PF1e decides HOW it works. Where a Storyteller concept conflicts
+    with PF1e structure, PF1e wins. Lore-based bonuses, penalties, or
+    capabilities are expressed only through a supernatural template, a
+    template's secondary ability, or a recognized Numina chain — never as a
+    base class feature. (Master Manifesto v1.1, Law 1)
+  supersedes_note: >
+    v0.1 and v0.2 recorded CORE-001 as "where lore and PF1e conflict, lore wins
+    and PF1e is the chassis," which read as the opposite of Law 1. Corrected here.
+
+economy:
+  currency: usd
+  conversion_rate_gp_to_usd: 10
+  abstracted_wealth_bonus: forbidden
+  master_document: equipment_wealth_statement
+  l0_starting_cash_usd: 1000
+  l0_starting_vehicle: concept_dependent
+  l0_starting_vehicle_cap_usd: 4000
+
+mortal_l0:
+  generation: [twenty_point_buy, standard_array]
+  category_prioritization_7_5_3: forbidden
+  pre_class_hit_die: false
+  l0_hit_points: "constitution modifier, minimum 1"
+  l0_feats: 2
+  level_1_feat_is_additional: true
+  l0_skill_ranks: 0
+  virtues_for_pure_mortals: descriptive_only
+  human_package: [plus_2_one_ability, bonus_feat, plus_1_skill_rank_per_level]
+  approved_class_list_master: mortal_legal_classes
+  expert_class_approved: true
+
 # --- HARD CEILINGS ---
 ceilings:
   single_instance_damage: 5d6
-  max_range_ft: 26400
+  max_range_ft: 26400          # 5 miles, Rank 5
   numina_dots: 5
-  true_faith_plus_divine_class: 5
+  true_faith_plus_divine_class: 5   # combined cap
   humanity: 10
   vinculum: 3
   garou_rank: 5
   tier: 8
+
 # --- RESOURCE ECONOMY ---
 resources:
   doctrine: single_resource
@@ -76,50 +66,42 @@ resources:
     scales_with: tier
     recovery: full_after_rest
   willpower:
-    id: WP-001
-    equals: hero_points
+    equals: hero_points        # 1:1, interchangeable (E8, ratified by C1)
     pool: "3 + highest_mental_modifier"
     spends:
       - reroll_d20_keep_second
       - suppress_mind_affecting_1_round
-    reroll_applies_everywhere: true
-    permanent_spend_reduces_max_by: 1
+    reroll_applies_everywhere: true   # no Beast carve-out (C1)
   numina_willpower:
-    id: WP-003
     formula: "wis_mod + floor(level/2)"
     minimum: 3
-    note: separate pool from hero points
-  willpower_ids:
-    WP-001: hero point pool, spends, equivalence
-    WP-003: mortal Numina pool
-    WP-004: Nature recovery, at most once per scene
-    WP-005: Garou-specific fifth spend (GR-057)
-    DR-004: Derangement flare suppression — 1 WP per SCENE, sole exception to the 1-round suppress
+    note: separate pool from hero points (WP-003)
   spp:
     per_level: tier
     dot_costs_in_clan: [2, 4, 6, 8, 10]
-    out_of_clan_multiplier: 1.5
-    banking: allowed
+    out_of_clan_multiplier: 1.5   # rounded up
+    banking: allowed              # Temptation Economy
   renown:
     mechanical: false
+    note: NEVER a tracked currency. Narrative and social only. (GR-004)
+
 # --- DC FORMULAS ---
 formulas:
-  gift_dc: "10 + rank + key_ability_mod"
-  rite_dc_rank_1_3: "12 + (3 * rank)"
+  gift_dc: "10 + rank + key_ability_mod"     # 11/12/13/14/15 + mod
+  rite_dc_rank_1_3: "12 + (3 * rank)"        # 15/18/21
   rite_dc_rank_4: 24
   rite_dc_rank_5: 27
   rite_check: "1d20 + character_level + wis_or_cha_mod + skill"
   true_faith_dc: "10 + cha_mod + faith_dots"
   degeneration_dc: "10 + sin_severity"
   degeneration_check: "1d20 + will_save + conscience_mod"
-  frenzy_save: "1d20 + will_save + self_control_mod - hunger_penalty"
-  rotschreck_save: "1d20 + will_save + courage_mod + fortitude_bonus"
-  hunger_penalty: "4 - current_blood_points"
-  blood_bond_resist_dc: "14 + (4 * vinculum)"
-  humanity_social_penalty: "7 - humanity"
+  blood_bond_resist_dc: "14 + (4 * vinculum)"   # 18/22/26
+  humanity_social_penalty: "7 - humanity"        # applies at humanity <= 6
   humanity_daytime_penalty: "10 - humanity"
   virtue_modifier: "rating - 1"
+
 # --- STATIC DC LADDER ---
+# House standard. Used for Frenzy, Rotschreck, driving, intrusion, stunts.
 static_ladder:
   minor: 15
   moderate: 18
@@ -130,94 +112,76 @@ static_dc_doctrine:
   scales_with_hd: false
   scales_with_tier: false
   note: "The Beast does not respect power. (CORE-005)"
-uses_static_ladder:
-  - frenzy_provocation
-  - rotschreck_stimulus
-  - driving_under_pressure
-  - computer_intrusion
+
 fixed_dcs:
   delirium: 16
-  humanity_regain_wis_check: 15
-  blood_bond_decay_will: 22
-  rotschreck_recovery_stepdown: 15
-  torpor_exit: "1 hp, or one full hit die if aggravated"
+  humanity_regain_wis_check: 15      # once per story arc
+  blood_bond_decay_will: 22          # per clean month
+  torpor_recovery_stepdown: 15       # per minute, Rotschreck recovery
+
 # --- SAVE MODIFIERS (C4) ---
 virtue_applications:
   frenzy_save: self_control
   rotschreck_save: courage
   degeneration_check: conscience
-  blood_bond_save: none
 virtues:
   rated: true
   fixed_at_creation: true
   purchasable: false
+  changed_only_by: gm_ruling_after_chronicle_defining_event
+
+# --- BOTCH ---
 botch:
   standard: "natural 1, or failure by 10+"
   degeneration_derangement_threshold: "failure by 5+"
-# --- DAMAGE, HEALING, DEATH ---
+
+# --- DAMAGE & HEALING ---
 healing:
   blood_point_to_hp: 3
   aggravated_at_rest_per_day: 1
   aggravated_in_torpor_per_bp_per_day: 3
-  aggravated_push_through_per_week: 3
-  garou_regeneration_per_round: "2 + rank"
+  aggravated_push_through_per_week: 3    # costs 1 permanent willpower
+  garou_regeneration_per_round: "2 + rank"   # shifted forms only
   garou_homid_heal: "1 gnosis = 1d8 + tier hp, swift action"
+
 silver:
   aggravated: true
   bypasses_dr: true
   suppresses_regeneration: "1 round following the hit"
   quote_verbatim: true
   source: GR-045
+
 death:
-  thresholds: pf1e_standard
-  torpor_trigger: "0 hp or lower from lethal or bashing"
-  torpor_trigger_in_frenzy: "below 0 hp"
+  thresholds: pf1e_standard      # negative CON
+  wound_tracks: false
+  health_levels: false
+  torpor_trigger: "0 hp from lethal or bashing"
   final_death_trigger: "0 hp from aggravated"
-  aggravated_has_no_survival_window: true
-  ferocity:
-    is_a_discrete_trait: true
-    granted_by_frenzy: false
-    floor: negative_constitution_score
-    applies_to: [lethal, bashing]
-    applies_to_aggravated: false
-    current_holders: none
-  stake:
-    condition: "Paralyzed (Heart-Staked)"
-    bypasses: [frenzy, ferocity]
-frenzy:
-  is_a_combat_enhancer: partial
-  melee_attack_and_damage: "+2 circumstance"
-  ac_penalty: -2
-  ranged_bonus: none
-  strength_bonus: none
-  grants_ferocity: false
+
 # --- COMBAT (modern) ---
 combat:
-  firearms_target: normal_ac
+  firearms_target: normal_ac       # touch-AC rule NOT used
   misfires: false
   magazine_reload: free_action
-  armor: ac_only
-  armor_as_dr: optional_module_only
+  tube_or_cylinder_reload: move_action
+  armor: ac_only                   # baseline; DR is an optional module
   blunt_trauma: optional_module_only
   damage_anchor:
     9mm: "1d6 / 20 ft"
     scoped_rifle: "1d10 / 80 ft"
+
 # --- BONUS DISCIPLINE ---
 bonuses:
   must_be_typed: true
   default_type: circumstance
   untyped_scaling_bonuses: forbidden
-penalties:
-  must_be_typed: false
-  note: >
-    PF1e penalties are untyped by convention and do not stack from
-    identical sources. Brujah −2, Gangrel social, and Hunger penalties
-    are correctly untyped. Do not flag these.
+
 # --- NAMING & STRUCTURE ---
 naming:
   unique_names_required: true
   scope: entire_corpus
-  applies_to: [gifts, rites, abilities, traits]
+  applies_to: [gifts, rites, abilities]
+
 skills:
   new_skills_allowed: false
   sanctioned_exceptions:
@@ -226,25 +190,20 @@ skills:
       ruling: PV-008
       precedential: false
   bar_for_future_proposals: "load-bearing for the setting, or nothing"
-  drive:
-    ruling: PV-007
-    is_a_skill: false
-    resolves_as: "dexterity check vs static ladder; Profession (driver) may substitute"
+
 progression:
   axes: [character_level, tier]
-  independent: true
-  garou_rank_cap: "rank <= tier"
+  independent: true               # Two-Axis Doctrine
+  garou_rank_cap: "rank <= tier"  # GR-001
   discipline_tier_floors:
     dots_1_2: 4
     dot_3: 5
     dot_4: 6
     dot_5: 7
+
+# --- SUPERSESSION ---
 supersession:
   rule: >
     Where a dedicated subsystem document exists, it is master.
     Other documents point to it rather than restating mechanics. (CORE-006)
-  superseded_versions_go_to: archive
-errata_prefixes:
-  E: global vampire-era series, runs to E27, items still open
-  XL: cross-line errata, current series — never extend the E-series
-  local: Vagari runs its own E-1/E-2/E-3, document-scoped only
+  superseded_versions_go_to: archive   # CORE-007
