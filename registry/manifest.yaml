@@ -1,8 +1,10 @@
 # FAFO Document Manifest
 # Resolves a stable key to the current document, version, and Drive ID.
 # Cite documents by KEY, not by filename. Filenames change; keys don't.
+
+
 meta:
-  version: "0.2"
+  version: "0.3"
   updated: 2026-07-29
   coverage: partial
   scope: >
@@ -10,7 +12,12 @@ meta:
     rulings and key references. Not yet a complete corpus inventory.
   extend_by: >
     Add or update an entry every time a document is created or version-bumped.
-    The changelog inside the document is the source of truth for its version.
+    NOTE: a version bump creates a NEW Google Doc with a NEW drive_id, because
+    neither Claude nor Cowork can edit or rename a Drive file in place. Every
+    lock therefore invalidates this file until it is updated. Prefer a batch
+    sync at the end of a phase over a fix after every micro-edit.
+
+
 folders:
   core:              1GXiyopwziRkAy2YPgUjM6hon2CSwq6bv
   vampire:           1ZUegYXJWEmVMWUfFwAsy8QjTiACwGv7H
@@ -18,12 +25,59 @@ folders:
   classic_hunters:   1k_Zaoxq0gIduhad7XRkb1XI_vWJ1N1v-
   project_twilight:  1z1eeJKD7TUOfHThfT1ALv85PlBOwvrfu
   equipment_combat:  13bhWOgdgQoU6t6jHXWbQAAISJb-YX1_J
-  mortal_baseline:   1V4oTVWsn381ZzgnYmqkGcpq3mlyMOYKf
+  mortal_baseline:   1V4oTVwsn381ZzgnYmqkGcpq3mlyMOYKf
   character_creation: 1EGFMU0WDuN76hw_7H3oZS-7fMQCT9LBG
   romani_gypsy:      1Jmsw1OPHL4W3tIwoCW1Fpm88bqYRqZ_3
   archive:           1gak4fIAHyGD8M2sYl5T7-jPdJvli7Ic7
+
+
 documents:
-  # --- L0 MORTAL CHASSIS ---
+
+
+  # --- GOVERNING ---
+  master_manifesto:
+    version: "1.1"
+    status: current
+    governing: true
+    supreme: true
+    ledger_lock: "1.81"
+    folder: core
+    drive_id: 1jSDz5LglpE_3hIdFz4koNlqZfLaWv2O0UksFbYLJWbE
+    note: >
+      Sits above every other document. Where any document conflicts with a
+      Core Law, the Core Law governs and the document is in error.
+
+
+  # --- L0 MORTAL CHASSIS (Phase 1) ---
+  mortal_l0_chassis:
+    version: "1.2"
+    status: current
+    ledger_lock: "1.82"
+    folder: mortal_baseline
+    drive_id: 1Vf4R_x38_A16olJG3TkQLRgsH675yNV0dZT-Mn056n8
+    master_of: [ability_generation, l0_hit_points, l0_feats, mortal_virtues]
+
+
+  mortal_legal_classes:
+    version: "1.1"
+    status: current
+    ledger_lock: "1.86"
+    folder: mortal_baseline
+    drive_id: 1HhcynLj0TUtJg-0vkD6W-hDFibY-uyyDmO3DQr6MgZc
+    supersedes: ["1.0"]
+    master_of: [approved_class_list, faction_training_packages]
+
+
+  civilian_career_packages:
+    version: "1.0"
+    status: current
+    ledger_lock: "1.87"
+    folder: mortal_baseline
+    drive_id: 1Jt6mnfFI9haRWC0Or8n0lQF4f4K9xfDJODrIhY1lrOA
+    master_of: [civilian_career_packages]
+    governed_by: mortal_legal_classes
+
+
   mortal_baseline_skills:
     version: "1.1"
     status: current
@@ -31,13 +85,34 @@ documents:
     drive_id: 17TD541vMUv6LR8QhmmPemBIPN0eYahRd_X8WZixHASo
     supersedes: ["1.0"]
     master_of: [skill_mapping, computer_skill, driving, d20_modern_policy]
+
+
   quickstart:
     version: "2.1"
-    status: current
+    status: superseded_pending_rewrite
+    canon: false
     folder: character_creation
     drive_id: 1_f27JVKcZvAbOI_FqHXlG_Blo__2AT5CBZcN0yTNU7k
-    supersedes: ["2.0", "1.9"]
-    master_of: [character_creation, attributes, floating_engines, gear_bundles]
+    pending: "3.0"
+    warning: >
+      NON-COMPLIANT with Master Manifesto v1.1 Law 1. Its category-prioritization
+      generation (7/5/3 Clean Even Scale) is superseded by mortal_l0_chassis §2.
+      Its Floating Engines run Storyteller attributes as live mechanics on
+      untemplated mortals. Its §4 grants Virtue modifiers on mortal Will saves.
+      Do not cite for character generation. Awaiting a v3.0 rewrite.
+
+
+  # --- ECONOMY & EQUIPMENT ---
+  equipment_wealth_statement:
+    version: "1.0"
+    status: current
+    ledger_lock: "1.84"
+    folder: core
+    drive_id: 1S_pkZ6pIVCDVzWomk2aeEq3zbo45u5r3YgOJMelGo4M
+    master_of: [economy, conversion_rate, starting_wealth, item_availability]
+    note: "Master for the economy. Locked rate: 1 gp = $10 USD."
+
+
   modern_combat:
     version: "1.0"
     status: current
@@ -45,13 +120,18 @@ documents:
     folder: equipment_combat
     drive_id: 1sQr8VBmLby_RCQ6yFqeQy4L1QbkeIkzrUPR7qkVHJ8k
     master_of: [firearms_procedure, reloading, nonlethal, cover, armor_rule]
+
+
   equipment_catalog:
-    version: "2.2"
+    version: "2.3"
     status: current
+    ledger_lock: "1.85"
     folder: equipment_combat
-    drive_id: 18qxAz-4tWnQsdo4NjyUDKBTqODUGfzVat0Y4ErkFdeE
-    supersedes: ["2.1", "2.0"]
-    governed_by: modern_combat
+    drive_id: 1ArLu787g3Jt6x3iI3z1QNQoyjBQW8OHQ67wASK0Qfy8
+    supersedes: ["2.2", "2.1", "2.0"]
+    governed_by: [modern_combat, equipment_wealth_statement]
+
+
   # --- L1 VAMPIRE ---
   virtues:
     version: "1.3"
@@ -60,6 +140,8 @@ documents:
     drive_id: 1hi6aKGDffkS5SDG5j-WKJjzrBypMagZP5op7UxntU7M
     supersedes: ["1.2", "1.1", "1.0"]
     master_of: [virtues, humanity, willpower_pool, golconda, degeneration_check]
+
+
   physical_states:
     version: "1.2"
     status: current
@@ -70,9 +152,10 @@ documents:
     amended_by:
       - errata: xl_03
         clause: >
-          Torpor trigger moves one step for characters in Frenzy only —
-          they act as though Disabled at exactly 0 HP, and Torpor arrives
-          below 0. Section 4 otherwise stands as written.
+          Torpor trigger moves one step for characters in Frenzy only — they act
+          as though Disabled at exactly 0 HP, and Torpor arrives below 0.
+
+
   frenzy:
     version: "1.3"
     status: current
@@ -80,18 +163,24 @@ documents:
     drive_id: 1peZzh8bi5YPhGDd_bTXMfHexgm30Y-Riq3JcpenVzcY
     supersedes: ["1.2", "1.1", "1.0"]
     governed_by: xl_03
+
+
   rotschreck:
     version: "1.1"
     status: current
     folder: vampire
     drive_id: 1NOpP69oaHfTreIhdHw2g0UcoY1QhDbEVtVJPN3rm9Zw
     supersedes: ["1.0"]
+
+
   derangements:
     version: "1.1"
     status: current
     folder: vampire
     drive_id: 1gsNHcblGGduU0TsX7pUyeWgCz_EBW8-zCDRkHtw8P4g
     supersedes: ["1.0"]
+
+
   blood_bonds:
     version: "1.2"
     status: current
@@ -99,6 +188,8 @@ documents:
     drive_id: 1eXsVgN7K4Y5h9hK-yMzAu04KurEiU10JP_nPyaqhOt4
     supersedes: ["1.1", "1.0"]
     master_of: [vinculum, blood_bond]
+
+
   aura_perception:
     version: "1.1"
     status: current
@@ -106,6 +197,8 @@ documents:
     drive_id: 1FFLiRBxV1OVJZGoYIeogTfBR6ZLOQyUemwjxL9Om3zA
     supersedes: ["1.0"]
     master_of: [aura_reading_framework]
+
+
   # --- MORTAL SUPERNATURAL ---
   hunters_hunted:
     version: "1.1"
@@ -113,6 +206,8 @@ documents:
     drive_id: 1224PMvT62E99ho3-EViQFrp37iYzHw1aPruGWqwbyEk
     supersedes: ["hunters_hunted_numina_1.0"]
     master_of: [numina, true_faith, psychic_phenomena, hedge_magic]
+
+
   vagari_conversion:
     version: "1.0"
     status: current
@@ -120,6 +215,8 @@ documents:
     drive_id: 1HChuQJGs6kyaqb9KXnWHO_g6FoPBpSYLvHDquTiW_NQ
     local_errata: [E-1, E-2, E-3]
     note: runs a document-local E-series; not the global one
+
+
   # --- GAROU (line complete) ---
   garou_sept_offices:
     version: "1.0"
@@ -127,32 +224,41 @@ documents:
     gr: GR-069
     folder: garou
     drive_id: 1TNByqHmarBV6KWeGSP6P8WufOaBl8BVzz-EV-zAhTdc
+
+
   garou_equipment:
     version: "1.0"
     status: current
     gr: GR-072
     folder: garou
     drive_id: 1m4U__Wuh2aeHAniA9bdsDnbpzqdhGs16A_BYne4XvDg
+
+
   garou_core_skills:
     version: "1.0"
     status: current
     folder: garou
     drive_id: 1OqooyuLzK23o-ab5izoq2z-CC68erg5_ffLYTwwa_z8
+
+
   garou_frenzy_rage_master:
     version: "1.0"
     status: current
     gr: GR-057
-    folder: core
+    folder: garou
     drive_id: 1fFpjMqirs5-wuJtoIclcHBUEV0jcjStZEeXkFGLdlXU
     governed_by: xl_03
-    filing_note: sits in core/, belongs in garou/
+
+
   garou_consistency_pass:
     version: "1.0"
     status: current
     gr: GR-075
     folder: garou
     drive_id: 1nDEYFe2kgnBCZWcZl4BM5-89YPl0qce-xt52e9eDGrg
-  # --- INQUISITION FRONT (active) ---
+
+
+  # --- INQUISITION FRONT (un-gated 2026-07-29) ---
   inquisition_core:
     version: "1.0"
     status: current
@@ -160,6 +266,8 @@ documents:
     ledger_lock: "1.76"
     folder: classic_hunters
     drive_id: 12J9nMAJPm7PBdftdsv6vvwdo6MV-JsNU4Hx2shNcrXc
+
+
   true_faith_extension:
     version: "1.0"
     status: current
@@ -168,6 +276,8 @@ documents:
     folder: classic_hunters
     drive_id: 1CN5QLhDS0WOGtEnBY6ov-B22mDfrcjSdQJOWMu9JTWM
     governed_by: hunters_hunted
+
+
   # --- CROSS-LINE ERRATA ---
   xl_01_garou_conviction_floor:
     version: "1.0"
@@ -176,12 +286,16 @@ documents:
     folder: classic_hunters
     drive_id: 1jY-_Aoz4nr_JBPN-Kc32I19LmYJkYOuURwTdDTU6A_4
     reference_copy: 1EFs0kI2u2pv580tsTO3Iq_flStNTxCLkwKlGy5mGLTs
+
+
   xl_02_hunters_hunted_spp:
     version: "1.0"
     status: current
     ledger_lock: "1.79"
     folder: classic_hunters
     drive_id: 1DWKE8sepNawr8BvZABG6ZJUZFcaoeoB0BQqMFLtPSL8
+
+
   xl_03_frenzy_ferocity_stake:
     version: "1.1"
     status: current
@@ -192,6 +306,8 @@ documents:
     governs: [frenzy, garou_frenzy_rage_master]
     amends: [physical_states]
     master_of: [ferocity, heart_staked_condition]
+
+
   # --- PROJECT TWILIGHT ---
   fbi_sad:
     version: "1.0"
@@ -199,6 +315,8 @@ documents:
     gr: GR-064
     folder: project_twilight
     drive_id: 1UjCozCbAprBYWB4GM65pI1P2HaW5R5S_DtFnMc7YLpw
+
+
   # --- GOVERNING RULINGS ---
   ruling_equipment_modern_combat:
     date: 2026-07-19
@@ -206,12 +324,16 @@ documents:
     folder: core
     drive_id: 1QWKxaCmHbaJUE5yg7Wnz8hhZ1ok91lwOtnL8HKAXgTU
     ids: [EQ-001, EQ-002, EQ-003]
+
+
   ruling_backgrounds_trait_mapping:
     date: 2026-07-19
     status: locked
     folder: core
     drive_id: 1OQ5RFwIrzEF_BA7YtbH_fTEp_5Q3G1kVZEdRGJbv0lI
     ids: [BG-001]
+
+
   # --- STATE DOCUMENTS ---
   ledger:
     version: "1.75"
@@ -224,12 +346,16 @@ documents:
       (1_Auj_RUsraqF8ZwMJEg1d_8vLlWq9C3IKYXXb3VQh4U).
       The full E1-E27 table is in v1.12
       (1auCfWeFqPP08OcPlBn6xOrEx9cea6iSFKvKEUS7H1F8).
-    pending_locks: ["1.76", "1.77", "1.78", "1.79", "1.80"]
+    pending_locks: ["1.76", "1.77", "1.78", "1.79", "1.80", "1.81", "1.82", "1.83", "1.84", "1.85", "1.86", "1.87"]
+
+
   current_state_summary:
     version: "1.75"
     status: current
     folder: core
     drive_id: 1p_xcUnUOXrQAiVk-wyXWuE6c0zZUXoZO0rexBhptjm4
+
+
   phantom_registry:
     version: "0.9"
     status: current
@@ -238,6 +364,8 @@ documents:
     warning: >
       Delta document. PV-007 and PV-008 were LOCKED in v0.5
       (1k0EuJ8an9oRQvZFvtohLF0pzTvLhXPk18tDUA7SVdxM), not in v0.9.
+
+
   # --- LEGACY / NOT CANON ---
   vtm_backgrounds:
     version: "2.0"
