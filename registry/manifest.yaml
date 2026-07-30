@@ -4,7 +4,7 @@
 
 
 meta:
-  version: "0.3"
+  version: "0.4"
   updated: 2026-07-29
   coverage: partial
   scope: >
@@ -36,25 +36,41 @@ documents:
 
   # --- GOVERNING ---
   master_manifesto:
-    version: "1.1"
+    version: "1.2"
     status: current
     governing: true
     supreme: true
-    ledger_lock: "1.81"
+    ledger_lock: "1.90"
     folder: core
-    drive_id: 1jSDz5LglpE_3hIdFz4koNlqZfLaWv2O0UksFbYLJWbE
+    drive_id: 1rfVyQl38yiyWZNBX7_jQKOfNo31-513Qm021-mbElbE
+    supersedes: ["1.1"]
     note: >
       Sits above every other document. Where any document conflicts with a
       Core Law, the Core Law governs and the document is in error.
 
 
+  # --- GOVERNING STRUCTURE ---
+  document_structure_standard:
+    version: "1.0"
+    status: current
+    governing: true
+    ledger_lock: "1.88"
+    folder: core
+    drive_id: 1NNfKSlh6E-yBL6gxRNijxV3aTRJpEgCZqTTxH2gB8rg
+    master_of: [line_segment_skeleton]
+    note: >
+      Seven-part Line Segment Skeleton for all future Lines.
+      Existing completed lines are grandfathered.
+
+
   # --- L0 MORTAL CHASSIS (Phase 1) ---
   mortal_l0_chassis:
-    version: "1.2"
+    version: "1.3"
     status: current
-    ledger_lock: "1.82"
+    ledger_lock: "1.89"
     folder: mortal_baseline
-    drive_id: 1Vf4R_x38_A16olJG3TkQLRgsH675yNV0dZT-Mn056n8
+    drive_id: 1TTbYE0DXYu2rQ0GH0D2RjvJdVT7R5J2EzW0GZ7Tw0_0
+    supersedes: ["1.2"]
     master_of: [ability_generation, l0_hit_points, l0_feats, mortal_virtues]
 
 
@@ -104,11 +120,12 @@ documents:
 
   # --- ECONOMY & EQUIPMENT ---
   equipment_wealth_statement:
-    version: "1.0"
+    version: "1.1"
     status: current
-    ledger_lock: "1.84"
+    ledger_lock: "1.92"
     folder: core
-    drive_id: 1S_pkZ6pIVCDVzWomk2aeEq3zbo45u5r3YgOJMelGo4M
+    drive_id: 1nu99bZ9XZXu8yAuSmOc59ue17_EIPw9gmIsURKVRNrY
+    supersedes: ["1.0"]
     master_of: [economy, conversion_rate, starting_wealth, item_availability]
     note: "Master for the economy. Locked rate: 1 gp = $10 USD."
 
@@ -123,12 +140,12 @@ documents:
 
 
   equipment_catalog:
-    version: "2.3"
+    version: "2.4"
     status: current
-    ledger_lock: "1.85"
+    ledger_lock: "1.91"
     folder: equipment_combat
-    drive_id: 1ArLu787g3Jt6x3iI3z1QNQoyjBQW8OHQ67wASK0Qfy8
-    supersedes: ["2.2", "2.1", "2.0"]
+    drive_id: 1flht-FUD5DT0IWtNNdhGWjAWJADPI92oc_xoIBFD3K4
+    supersedes: ["2.3", "2.2", "2.1", "2.0"]
     governed_by: [modern_combat, equipment_wealth_statement]
 
 
@@ -336,17 +353,17 @@ documents:
 
   # --- STATE DOCUMENTS ---
   ledger:
-    version: "1.75"
+    version: "1.87"
     status: current
     folder: core
-    drive_id: 1RjPmRM34-m6QLp9Wb7qOR7HM-SIglow2telrNjPI-N0
+    drive_id: 1CUm1wENxqnaRdXk9H2PgZddZXBADnVoA1tjVwjvsVHA
     warning: >
       Delta document. Carries forward all prior content by reference.
       The last ledger holding the full errata registry is v1.15
       (1_Auj_RUsraqF8ZwMJEg1d_8vLlWq9C3IKYXXb3VQh4U).
       The full E1-E27 table is in v1.12
       (1auCfWeFqPP08OcPlBn6xOrEx9cea6iSFKvKEUS7H1F8).
-    pending_locks: ["1.76", "1.77", "1.78", "1.79", "1.80", "1.81", "1.82", "1.83", "1.84", "1.85", "1.86", "1.87"]
+    pending_locks: ["1.88", "1.89", "1.90", "1.91", "1.92"]
 
 
   current_state_summary:
