@@ -4,7 +4,7 @@
 
 
 meta:
-  version: "0.4"
+  version: "0.5"
   updated: 2026-07-29
   engine: pathfinder_1e
   governing_document: master_manifesto_v1.2
@@ -21,7 +21,6 @@ meta:
     v0.3. v0.3 was itself built by a partial edit applied to a CDN-cached v0.1
     base, which silently reverted everything v0.2 had added. v0.4 is a full
     replacement restoring that content. Do not partial-edit this file.
-
 
 # --- WHAT FAFO DOES NOT HAVE ---
 # These exist to catch clauses that read correctly because they are true
@@ -78,7 +77,17 @@ absent_systems:
       Wits as a flat initiative bonus and Manipulation as an untyped social
       modifier ran Storyteller attributes as live mechanics on untemplated
       mortals, against Law 1. Initiative is DEX; social checks are CHA.
-
+  true_faith:
+    is_a_feat: false
+    is_a_merit: false
+    is_a_class_feature: false
+    purchasable: false
+    acquisition: storyteller_award_only
+    master: hunters_hunted
+    note: >
+      5-dot Numina chain. Never bought with XP, SPP, feats, or traits.
+      Any document listing True Faith among feats, merits, or purchasable
+      options is in error. (Hunters Hunted v1.1 §4; Manifesto Law 1)
 
 # --- ECONOMY ---
 economy:
@@ -89,7 +98,6 @@ economy:
   l0_starting_cash_usd: 1000
   l0_starting_vehicle: concept_dependent
   l0_starting_vehicle_cap_usd: 4000
-
 
 # --- MORTAL L0 CHASSIS ---
 mortal_l0:
@@ -106,7 +114,6 @@ mortal_l0:
   expert_class_approved: true
   package_selection: "one Faction Training Package OR one Career Package, never both absent ST approval"
 
-
 # --- HARD CEILINGS ---
 ceilings:
   single_instance_damage: 5d6
@@ -117,7 +124,6 @@ ceilings:
   vinculum: 3
   garou_rank: 5
   tier: 8
-
 
 # --- RESOURCE ECONOMY ---
 resources:
@@ -166,7 +172,6 @@ resources:
   renown:
     mechanical: false
 
-
 # --- DC FORMULAS ---
 formulas:
   gift_dc: "10 + rank + key_ability_mod"
@@ -185,7 +190,6 @@ formulas:
   humanity_daytime_penalty: "10 - humanity"
   virtue_modifier: "rating - 1"
 
-
 # --- STATIC DC LADDER ---
 static_ladder:
   minor: 15
@@ -203,14 +207,12 @@ uses_static_ladder:
   - driving_under_pressure
   - computer_intrusion
 
-
 fixed_dcs:
   delirium: 16
   humanity_regain_wis_check: 15
   blood_bond_decay_will: 22
   rotschreck_recovery_stepdown: 15
   torpor_exit: "1 hp, or one full hit die if aggravated"
-
 
 # --- SAVE MODIFIERS (C4) ---
 virtue_applications:
@@ -224,11 +226,9 @@ virtues:
   purchasable: false
   pure_mortals: descriptive_only
 
-
 botch:
   standard: "natural 1, or failure by 10+"
   degeneration_derangement_threshold: "failure by 5+"
-
 
 # --- DAMAGE, HEALING, DEATH ---
 healing:
@@ -239,14 +239,12 @@ healing:
   garou_regeneration_per_round: "2 + rank"
   garou_homid_heal: "1 gnosis = 1d8 + tier hp, swift action"
 
-
 silver:
   aggravated: true
   bypasses_dr: true
   suppresses_regeneration: "1 round following the hit"
   quote_verbatim: true
   source: GR-045
-
 
 death:
   thresholds: pf1e_standard
@@ -266,7 +264,6 @@ death:
     condition: "Paralyzed (Heart-Staked)"
     bypasses: [frenzy, ferocity]
 
-
 frenzy:
   is_a_combat_enhancer: partial
   melee_attack_and_damage: "+2 circumstance"
@@ -275,7 +272,6 @@ frenzy:
   strength_bonus: none
   grants_ferocity: false
   durability_window: "acts as Disabled at exactly 0 hp from lethal or bashing"
-
 
 # --- COMBAT (modern) ---
 combat:
@@ -288,7 +284,6 @@ combat:
   damage_anchor:
     9mm: "1d6 / 20 ft"
     scoped_rifle: "1d10 / 80 ft"
-
 
 # --- BONUS DISCIPLINE ---
 bonuses:
@@ -307,13 +302,11 @@ penalties:
     identical sources. Brujah −2, Gangrel social, and Hunger penalties
     are correctly untyped. Do not flag these.
 
-
 # --- NAMING & STRUCTURE ---
 naming:
   unique_names_required: true
   scope: entire_corpus
   applies_to: [gifts, rites, abilities, traits]
-
 
 skills:
   new_skills_allowed: false
@@ -332,7 +325,6 @@ skills:
     resolves_as: "BAB + DEX + proficiency; specialization via Weapon Focus"
   well_skilled_designation: retired
 
-
 progression:
   axes: [character_level, tier]
   independent: true
@@ -343,7 +335,6 @@ progression:
     dot_4: 6
     dot_5: 7
   templates_per_character: 1
-
 
 supersession:
   rule: >
