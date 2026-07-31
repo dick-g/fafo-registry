@@ -4,8 +4,8 @@
 
 
 meta:
-  version: "0.4"
-  updated: 2026-07-29
+  version: "0.7"
+  updated: 2026-07-31
   coverage: partial
   scope: >
     Active canon verified 2026-07-27 through 2026-07-29, plus governing
@@ -25,9 +25,10 @@ folders:
   classic_hunters:   1k_Zaoxq0gIduhad7XRkb1XI_vWJ1N1v-
   project_twilight:  1z1eeJKD7TUOfHThfT1ALv85PlBOwvrfu
   equipment_combat:  13bhWOgdgQoU6t6jHXWbQAAISJb-YX1_J
-  mortal_baseline:   1V4oTVwsn381ZzgnYmqkGcpq3mlyMOYKf
+  mortal_baseline:   1V4oTVWsn381ZzgnYmqkGcpq3mlyMOYKf
   character_creation: 1EGFMU0WDuN76hw_7H3oZS-7fMQCT9LBG
   romani_gypsy:      1Jmsw1OPHL4W3tIwoCW1Fpm88bqYRqZ_3
+  templates:         1F_Dh7I_3Dt5NUYPXgXH5PJfHtetBUkk8
   archive:           1gak4fIAHyGD8M2sYl5T7-jPdJvli7Ic7
 
 
@@ -104,19 +105,18 @@ documents:
 
 
   quickstart:
-    version: "2.1"
-    status: superseded_pending_rewrite
-    canon: false
-    folder: character_creation
-    drive_id: 1_f27JVKcZvAbOI_FqHXlG_Blo__2AT5CBZcN0yTNU7k
-    pending: "3.0"
-    warning: >
-      NON-COMPLIANT with Master Manifesto v1.1 Law 1. Its category-prioritization
-      generation (7/5/3 Clean Even Scale) is superseded by mortal_l0_chassis §2.
-      Its Floating Engines run Storyteller attributes as live mechanics on
-      untemplated mortals. Its §4 grants Virtue modifiers on mortal Will saves.
-      Do not cite for character generation. Awaiting a v3.0 rewrite.
-
+    version: "3.0"
+    status: current
+    canon: true
+    folder: core
+    drive_id: 1Hl2oNNXISOC1o2Qhae6ayGGnfFeHiH16mY8ZzxQt3HM
+    supersedes: ["2.1"]
+    master_of: [mortal_lethality]
+    note: >
+      Supersedes Player Quickstart Guide v2.1, which taught 7/5/3 generation
+      and the Floating Engines and was flagged canon: false. Mortal lethality:
+      0 HP is Disabled, dying begins below 0, dead at negative CON. The vampire
+      Torpor-at-0 trigger does not apply to mortals.
 
   # --- ECONOMY & EQUIPMENT ---
   equipment_wealth_statement:
@@ -151,11 +151,12 @@ documents:
 
   # --- L1 VAMPIRE ---
   virtues:
-    version: "1.3"
+    version: "1.4"
     status: current
+    ledger_lock: "2.03"
     folder: core
-    drive_id: 1hi6aKGDffkS5SDG5j-WKJjzrBypMagZP5op7UxntU7M
-    supersedes: ["1.2", "1.1", "1.0"]
+    drive_id: 1HYR5-IEzu0hio_eIfQSRSdouZawHnvvOyWSAgnaFlsk
+    supersedes: ["1.3", "1.2", "1.1", "1.0"]
     master_of: [virtues, humanity, willpower_pool, golconda, degeneration_check]
 
 
@@ -353,17 +354,16 @@ documents:
 
   # --- STATE DOCUMENTS ---
   ledger:
-    version: "1.87"
+    version: "2.08"
     status: current
     folder: core
-    drive_id: 1CUm1wENxqnaRdXk9H2PgZddZXBADnVoA1tjVwjvsVHA
+    drive_id: 1VvBVBndQ1rFMVf8Mgd9x04M3d5R3r5rd-rLJG1R1uYo
     warning: >
       Delta document. Carries forward all prior content by reference.
       The last ledger holding the full errata registry is v1.15
       (1_Auj_RUsraqF8ZwMJEg1d_8vLlWq9C3IKYXXb3VQh4U).
       The full E1-E27 table is in v1.12
       (1auCfWeFqPP08OcPlBn6xOrEx9cea6iSFKvKEUS7H1F8).
-    pending_locks: ["1.88", "1.89", "1.90", "1.91", "1.92"]
 
 
   current_state_summary:
@@ -391,3 +391,114 @@ documents:
     folder: archive
     drive_id: 1jOjwROBAw75Is06-p4Wd2zw14KYfO_TAMhbYK03mUYI
     note: idea-mine only; the Background system is retired by BG-001
+
+  # --- ADDED v0.7: documents that existed but were invisible to the manifest ---
+  spp_advancement_table:
+    version: "1.3"
+    status: current
+    folder: core
+    drive_id: 1cR66Y-jYZtuL6Dqm5r8__j4VciJb2Ix51yf2srUOqbI
+    supersedes: ["1.2", "1.1", "1.0"]
+    master_of: [spp_costs, dot_costs, tier_floors, spp_banking]
+    note: "Tier floors are the sole dot gate. Advancement tracks retired by C3."
+
+  ghoul_template:
+    version: "1.1.3"
+    status: closed
+    ledger_lock: "2.07"
+    folder: templates
+    drive_id: 1J8BF2NMzoJ1hOCKIxRFj3UyvoH_y35avuTiSe3HDM6o
+    supersedes: ["1.1.2", "1.1.1", "1.1", "1.0"]
+    governed_by: [physical_states, blood_bonds]
+    note: >
+      CLOSED. Aggravated recovery is push-through only at the Line Master price
+      (3 HP/week, 1 permanent Willpower/week); no Torpor route, no at-rest
+      recovery. Blood Bonds v1.2 governs section 6 in full.
+
+  society_of_leopold:
+    version: "1.2"
+    status: current
+    ledger_lock: "2.08"
+    folder: classic_hunters
+    drive_id: 1rIAIr54s-f7S3DxymXS4KVcd6fKgh9JxzkTDVf84_Z4
+    supersedes: ["1.1", "1.0"]
+    governed_by: [inquisition_core, true_faith_extension]
+    note: "GAP-13 resolved. Liturgical items are owned by inquisition_core section 9."
+
+  audit_verdict_rule:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1X5UajHOZu3U1BVA3N4wJZrcGB4aZkanI80XWb2a2ZjA
+    master_of: [audit_verdicts, stopping_rule]
+
+  pre_draft_registry_pass:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1hVSLggUXppf4vnnwBXFDyFhWsSojY1A6nLTBFaWRnvM
+    master_of: [pre_draft_gate]
+
+  terminology_index:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1tlT2QzDWKyPef16LGwEDfwFK-E5_HEdBDDSRHZDoemY
+    master_of: [terminology]
+
+  line_master_ownership_rule:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1wt1SXxUgWPVnaHW6HbzyP-6RVOihn0H3PsQUtWR_eGQ
+    master_of: [line_master_ownership]
+
+  capacity_pause_protocol:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1-WBXESXX8gC5U5V6I4LPr1ICY6TXe4Sj6mLLGsU28b4
+    master_of: [capacity_pause]
+
+# --- COVERAGE HONESTY (added v0.7) ---
+# The manifest is the source of truth for whether a document exists, but its
+# coverage is PARTIAL. Silence here is NOT evidence a document was never
+# written. Until coverage is complete, confirm absence against the Ledger too.
+existence_rule:
+  manifest_is_authoritative_for: [version, drive_id, folder, status]
+  manifest_silence_proves_nonexistence: false
+  on_silence: "check the Ledger before concluding a document does not exist"
+  known_absent:
+    note: >
+      Real, locked documents not yet carrying a manifest key as of v0.7.
+      Scheduled for v0.8. Their Drive IDs were not re-verified in this pass
+      and are deliberately omitted rather than asserted from memory.
+    documents:
+      - vampire_template_base
+      - degeneration
+      - discipline_chains_core_five
+      - thaumaturgy_subsystem
+      - path_of_blood
+      - movement_of_the_mind
+      - lure_of_flames
+      - path_of_conjuring
+      - universal_rebirth_framework
+      - kindred_rebirth
+      - clan_documents_all_seven
+      - gargoyle_template
+      - mummy_template
+      - diocesan_investigators
+      - conversion_engine_static_reference
+  known_stale:
+    note: >
+      Keys present below whose version was NOT re-verified in the v0.7 pass.
+      Believed behind; do not treat their version or drive_id as current
+      until confirmed.
+    entries:
+      inquisition_core: "carried at 1.0; Ledger and Society of Leopold v1.2 both cite 1.3"
+      true_faith_extension: "carried at 1.0; Ledger cites 1.1"
