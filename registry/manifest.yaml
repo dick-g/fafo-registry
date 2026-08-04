@@ -4,8 +4,8 @@
 
 
 meta:
-  version: "0.8"
-  updated: 2026-07-31
+  version: "0.9"
+  updated: 2026-08-03
   coverage: partial
   scope: >
     Active canon verified 2026-07-27 through 2026-07-29, plus governing
@@ -536,15 +536,19 @@ documents:
       attribute adjustments struck under C2 at v1.1.
 
   protean:
-    version: "1.0"
+    version: "1.1"
     status: current
+    ledger_lock: "2.13"
     folder: vampire
-    drive_id: 1pe9fcWVU0P_Qjbtk804bPAVO-umf1Cu77VGAZ4YlPsc
+    drive_id: 1hRApeJHM2r0iKFdG8TC0adEZVW2KSZPH2t_hcCd_ooU
+    supersedes: ["1.0"]
     master_of: [earth_meld, form_of_the_beast, feral_claws]
-    review: >
-      REWRITE OWED. Earth Meld at dot 3 recovers "1 additional Health Level
-      per day" — a unit abolished by physical_states v1.2. Never audited;
-      not among the 28 documents of the Vampire/L1 layer audit.
+    note: >
+      Earth Meld at dot 3 is depended on by gargoyle_template section 9
+      (Visceratika 4), which states deltas against it rather than restating
+      the mechanic. Its Ethereal state, forced emergence, Tremorsense range,
+      natural-surface restriction and zero Blood Pool drain must survive any
+      future edit or the Gargoyle entry breaks.
 
   garou_passive_traits:
     version: "1.1"
