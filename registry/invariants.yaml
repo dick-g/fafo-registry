@@ -1,0 +1,426 @@
+# FAFO Invariants
+# Rules that are always true. If generated content contradicts a line
+# here, the content is wrong — not the invariant.
+
+
+meta:
+  version: "0.6"
+  updated: 2026-08-04
+  engine: pathfinder_1e
+  governing_document: master_manifesto_v1.2
+  rule: >
+    PF1e is the sole mechanical engine. Lore (WoD) decides WHAT exists in the
+    setting; PF1e decides HOW it works. Where a Storyteller concept conflicts
+    with PF1e structure, PF1e wins. Lore-based bonuses, penalties, or
+    capabilities are expressed only through a supernatural template, a
+    template's secondary ability, or a recognized Numina chain — never as a
+    base class feature. (Master Manifesto v1.2, Law 1)
+  supersedes_note: >
+    v0.1 recorded CORE-001 as "where lore and PF1e conflict, lore wins and
+    PF1e is the chassis," which read as the opposite of Law 1. Corrected in
+    v0.3. v0.3 was itself built by a partial edit applied to a CDN-cached v0.1
+    base, which silently reverted everything v0.2 had added. v0.4 is a full
+    replacement restoring that content. Do not partial-edit this file.
+
+# --- COVERAGE (added v0.6) ---
+# This file is AUTHORITATIVE but NOT COMPLETE. It is the same shape of
+# partial coverage that manifest.yaml records in its existence_rule block.
+#
+# Where a line here exists, it governs: content contradicting it is wrong.
+# Where a line is ABSENT, that absence proves nothing. A locked ruling may
+# exist in the Master Canon Ledger or in a line document without having
+# been mirrored here yet.
+#
+# This caveat was added because its absence caused a regression. Garou
+# Forms & Shapechanging correctly used the Primal-Urge skill; an audit read
+# skills.sanctioned_exceptions, found only Computer, concluded Primal-Urge
+# was unsanctioned leakage, and removed a working mechanic. Primal-Urge had
+# been formally locked in GR-020 since 2026-07-23. The document was right
+# and this file was incomplete.
+coverage_rule:
+  is_authoritative: true
+  is_complete: false
+  absence_proves_nothing: true
+  on_absence: >
+    Before concluding that a mechanic, skill, or system is unsanctioned
+    because it does not appear here, confirm against the Master Canon Ledger
+    and against the owning Line Master document. Only then treat it as a
+    finding. A missing entry here is a defect in this file, not evidence
+    against the document.
+  applies_especially_to:
+    - skills.sanctioned_exceptions
+    - formulas
+    - absent_systems
+    - fixed_dcs
+
+# --- WHAT FAFO DOES NOT HAVE ---
+# These exist to catch clauses that read correctly because they are true
+# in a SOURCE system (Storyteller, or baseline PF1e) while meaning nothing
+# in FAFO. Three such clauses shipped before this section existed.
+# Flag any document that grants, removes, ignores, or modifies these.
+absent_systems:
+  wound_penalties:
+    present: false
+    note: >
+      Losing HP imposes no automatic penalty (Physical States v1.2 section 1).
+      "Ignores wound penalties" grants nothing. Storyteller has them; FAFO does not.
+  health_levels:
+    present: false
+    note: >
+      All injury is denominated in Hit Points. Declared corpus-wide in
+      Physical States v1.2 section 1. Any "health level" phrasing is an error.
+  wound_tracks:
+    present: false
+  disabled_state_at_0_hp:
+    present: false
+    note: >
+      Baseline PF1e treats 0 HP as Disabled. FAFO overrides this — 0 HP or
+      lower from lethal/bashing is Torpor. The sole exception is a character
+      in Frenzy, who acts as though Disabled at exactly 0 HP (XL-03 section 2).
+      "Gains Diehard at 0 HP" is null outside that exception.
+  massive_damage_threshold:
+    present: false
+  action_points:
+    present: false
+  wealth_bonus:
+    present: false
+    note: FAFO prices in USD. (d20 Modern subsystem, rejected)
+  defense_bonus:
+    present: false
+    note: Armor is AC. (d20 Modern subsystem, rejected)
+  background_point_pool:
+    present: false
+    note: Backgrounds are narrative descriptors. (BG-001)
+  reputation_bonus:
+    present: false
+  renown_as_currency:
+    present: false
+    note: Renown is narrative and social only. (GR-004)
+  category_prioritization_7_5_3:
+    present: false
+    note: >
+      Ruled out under Law 1 as a Storyteller mechanic. Generation is straight
+      PF1e per Mortal L0 Chassis v1.3 section 2. Player Quickstart v2.1 still
+      teaches it and is flagged canon: false pending a v3.0 rewrite.
+  floating_engines:
+    present: false
+    note: >
+      Wits as a flat initiative bonus and Manipulation as an untyped social
+      modifier ran Storyteller attributes as live mechanics on untemplated
+      mortals, against Law 1. Initiative is DEX; social checks are CHA.
+  true_faith:
+    is_a_feat: false
+    is_a_merit: false
+    is_a_class_feature: false
+    purchasable: false
+    acquisition: storyteller_award_only
+    master: hunters_hunted
+    note: >
+      5-dot Numina chain. Never bought with XP, SPP, feats, or traits.
+      Any document listing True Faith among feats, merits, or purchasable
+      options is in error. (Hunters Hunted v1.1 §4; Manifesto Law 1)
+
+# --- ECONOMY ---
+economy:
+  currency: usd
+  conversion_rate_gp_to_usd: 10
+  abstracted_wealth_bonus: forbidden
+  master_document: equipment_wealth_statement
+  l0_starting_cash_usd: 1000
+  l0_starting_vehicle: concept_dependent
+  l0_starting_vehicle_cap_usd: 4000
+
+# --- MORTAL L0 CHASSIS ---
+mortal_l0:
+  generation: [twenty_point_buy, standard_array]
+  category_prioritization_7_5_3: forbidden
+  pre_class_hit_die: false
+  l0_hit_points: "constitution modifier, minimum 1"
+  l0_feats: 2
+  level_1_feat_is_additional: true
+  l0_skill_ranks: 0
+  virtues_for_pure_mortals: descriptive_only
+  human_package: [plus_2_one_ability, bonus_feat, plus_1_skill_rank_per_level]
+  approved_class_list_master: mortal_legal_classes
+  expert_class_approved: true
+  package_selection: "one Faction Training Package OR one Career Package, never both absent ST approval"
+
+# --- HARD CEILINGS ---
+ceilings:
+  single_instance_damage: 5d6
+  max_range_ft: 26400
+  numina_dots: 5
+  true_faith_plus_divine_class: 5
+  humanity: 10
+  vinculum: 3
+  garou_rank: 5
+  tier: 8
+
+# --- RESOURCE ECONOMY ---
+resources:
+  doctrine: single_resource
+  hybrid_pools: forbidden
+  dual_resource_costs: forbidden
+  multiple_clean_pools: allowed
+  multiple_clean_pools_note: >
+    Manifesto Law 5. Independent pools are permitted when cleanly separated by
+    function with no dual-resource costs. Garou Rage + Gnosis explicitly compliant.
+  rage:
+    scope: scene
+    formula: "2 + tier"
+    persists: false
+  gnosis:
+    scope: persistent
+    range: [4, 30]
+    scales_with: tier
+    recovery: full_after_rest
+  willpower:
+    id: WP-001
+    equals: hero_points
+    pool: "3 + highest_mental_modifier"
+    minimum: 3
+    spends:
+      - reroll_d20_keep_second
+      - suppress_mind_affecting_1_round
+    reroll_applies_everywhere: true
+    permanent_spend_reduces_max_by: 1
+  numina_willpower:
+    id: WP-003
+    formula: "wis_mod + floor(level/2)"
+    minimum: 3
+    note: separate pool from hero points
+  willpower_ids:
+    WP-001: hero point pool, spends, equivalence
+    WP-003: mortal Numina pool
+    WP-004: core personal drive or motivation, once per scene, must cost something (amended by Mortal L0 Chassis v1.3; the original wording named the Nature archetype)
+    WP-005: Garou-specific fifth spend (GR-057)
+    DR-004: Derangement flare suppression — 1 WP per SCENE, sole exception to the 1-round suppress
+  spp:
+    per_level: tier
+    dot_costs_in_clan: [2, 4, 6, 8, 10]
+    out_of_clan_multiplier: 1.5
+    banking: allowed
+  renown:
+    mechanical: false
+
+# --- DC FORMULAS ---
+formulas:
+  gift_dc: "10 + rank + key_ability_mod"
+  rite_dc_rank_1_3: "12 + (3 * rank)"
+  rite_dc_rank_4: 24
+  rite_dc_rank_5: 27
+  rite_check: "1d20 + character_level + wis_or_cha_mod + skill"
+  true_faith_dc: "10 + cha_mod + faith_dots"
+  degeneration_dc: "10 + sin_severity"
+  degeneration_check: "1d20 + will_save + conscience_mod"
+  frenzy_save: "1d20 + will_save + self_control_mod - hunger_penalty"
+  rotschreck_save: "1d20 + will_save + courage_mod + fortitude_bonus"
+  hunger_penalty: "4 - current_blood_points"
+  blood_bond_resist_dc: "14 + (4 * vinculum)"
+  humanity_social_penalty: "7 - humanity"
+  humanity_daytime_penalty: "10 - humanity"
+  virtue_modifier: "rating - 1"
+
+# --- STATIC DC LADDER ---
+static_ladder:
+  minor: 15
+  moderate: 18
+  major: 21
+  severe: 24
+static_dc_doctrine:
+  scales_with_level: false
+  scales_with_hd: false
+  scales_with_tier: false
+  note: "The Beast does not respect power. (CORE-005)"
+uses_static_ladder:
+  - frenzy_provocation
+  - rotschreck_stimulus
+  - driving_under_pressure
+  - computer_intrusion
+
+fixed_dcs:
+  delirium: 16
+  humanity_regain_wis_check: 15
+  blood_bond_decay_will: 22
+  rotschreck_recovery_stepdown: 15
+  torpor_exit: "1 hp, or one full hit die if aggravated"
+
+# --- SAVE MODIFIERS (C4) ---
+virtue_applications:
+  frenzy_save: self_control
+  rotschreck_save: courage
+  degeneration_check: conscience
+  blood_bond_save: none
+virtues:
+  rated: true
+  fixed_at_creation: true
+  purchasable: false
+  pure_mortals: descriptive_only
+
+botch:
+  standard: "natural 1, or failure by 10+"
+  degeneration_derangement_threshold: "failure by 5+"
+
+# --- DAMAGE, HEALING, DEATH ---
+healing:
+  blood_point_to_hp: 3
+  aggravated_at_rest_per_day: 1
+  aggravated_in_torpor_per_bp_per_day: 3
+  aggravated_push_through_per_week: 3
+  garou_regeneration_per_round: "2 + rank"
+  garou_homid_heal: "1 gnosis = 1d8 + tier hp, swift action"
+
+silver:
+  aggravated: true
+  bypasses_dr: true
+  suppresses_regeneration: "1 round following the hit"
+  quote_verbatim: true
+  source: GR-045
+
+death:
+  thresholds: pf1e_standard
+  torpor_trigger: "0 hp or lower from lethal or bashing"
+  torpor_trigger_in_frenzy: "below 0 hp"
+  final_death_trigger: "0 hp from aggravated"
+  aggravated_has_no_survival_window: true
+  ferocity:
+    is_a_discrete_trait: true
+    granted_by_frenzy: false
+    floor: negative_constitution_score
+    applies_to: [lethal, bashing]
+    applies_to_aggravated: false
+    current_holders: none
+    subsumes_frenzy_window: true
+  stake:
+    condition: "Paralyzed (Heart-Staked)"
+    bypasses: [frenzy, ferocity]
+
+frenzy:
+  is_a_combat_enhancer: partial
+  melee_attack_and_damage: "+2 circumstance"
+  ac_penalty: -2
+  ranged_bonus: none
+  strength_bonus: none
+  grants_ferocity: false
+  durability_window: "acts as Disabled at exactly 0 hp from lethal or bashing"
+
+# --- COMBAT (modern) ---
+combat:
+  firearms_target: normal_ac
+  misfires: false
+  magazine_reload: free_action
+  armor: ac_only
+  armor_as_dr: optional_module_only
+  blunt_trauma: optional_module_only
+  damage_anchor:
+    9mm: "1d6 / 20 ft"
+    scoped_rifle: "1d10 / 80 ft"
+
+# --- BONUS DISCIPLINE ---
+bonuses:
+  must_be_typed: true
+  default_type: circumstance
+  untyped_scaling_bonuses: forbidden
+  trait_bonuses_stack: false
+  trait_bonuses_stack_note: >
+    PF1e trait bonuses do not stack. A package granting a trait bonus on a
+    skill it also lists will silently waste one. Type compensation bonuses
+    differently (competence).
+penalties:
+  must_be_typed: false
+  note: >
+    PF1e penalties are untyped by convention and do not stack from
+    identical sources. Brujah −2, Gangrel social, and Hunger penalties
+    are correctly untyped. Do not flag these.
+
+# --- NAMING & STRUCTURE ---
+naming:
+  unique_names_required: true
+  scope: entire_corpus
+  applies_to: [gifts, rites, abilities, traits]
+
+skills:
+  new_skills_allowed: false
+  sanctioned_exceptions_note: >
+    This list is not presumed complete — see coverage_rule. A skill absent
+    here is not thereby unsanctioned; check the Ledger and the owning Line
+    Master before treating it as a finding.
+  sanctioned_exceptions:
+    - name: Computer
+      ability: INT
+      ruling: PV-008
+      precedential: false
+      scope: corpus
+    - name: Primal-Urge
+      ability: WIS
+      ruling: GR-020
+      precedential: false
+      scope: garou_line
+      class_skill_for: all_garou_breeds
+      note: >
+        Standalone class skill, locked 2026-07-23. Measures predatory
+        instinct, spirit awareness, and connection to animal forms. Owns the
+        Form Stability Check (1d20 + Primal-Urge + Wis mod vs DC 15 +
+        silver/Rage/stress intensity) used to resist forced shape-shifting,
+        and is the activation roll term for Fetishes (GR-024). 5+ ranks
+        grants a +2 synergy bonus on Survival and Perception (Scent).
+    - name: Rituals
+      ability: WIS
+      ruling: GR-020
+      precedential: false
+      scope: garou_line
+      class_skill_for: [theurge, galliard, philodox]
+      note: >
+        Standalone class skill, locked 2026-07-23. ADDITIVE to the GR-018
+        Rite Check, never a replacement: the Skill Bonuses term is the HIGHER
+        of Rituals ranks or the GR-018 skills, and they do not stack. Its
+        assist channel (DC 10 + Rite Rank, +2 each, max +6) is separate from
+        the GR-018 Help check (max +10) and the two do not stack on the same
+        assistant.
+  not_new_skills:
+    - name: "Knowledge (Occult) [Enigmas]"
+      ruling: GR-020
+      note: >
+        A specialty DESCRIPTOR within the existing Knowledge (Occult) skill,
+        not a rival skill line. Deliberately reconciled this way so no
+        existing Knowledge (Occult) reference required re-pointing. Usable
+        with ordinary Knowledge (Occult) ranks.
+  unverified:
+    - name: "Knowledge (spirits)"
+      appears_in: [GR-018, garou_rites_architecture]
+      note: >
+        PF1e has Knowledge (planes); Knowledge (spirits) is not a standard
+        PF1e Knowledge field and is not sanctioned by GR-020. Inherited from
+        the GR-018 skill list. Unresolved — audit GR-018.
+  bar_for_future_proposals: "load-bearing for the setting, or nothing"
+  drive:
+    ruling: PV-007
+    is_a_skill: false
+    resolves_as: "dexterity check vs static ladder; Profession (driver) may substitute"
+  firearms:
+    is_a_skill: false
+    resolves_as: "BAB + DEX + proficiency; specialization via Weapon Focus"
+  well_skilled_designation: retired
+
+progression:
+  axes: [character_level, tier]
+  independent: true
+  garou_rank_cap: "rank <= tier"
+  discipline_tier_floors:
+    dots_1_2: 4
+    dot_3: 5
+    dot_4: 6
+    dot_5: 7
+  templates_per_character: 1
+
+supersession:
+  rule: >
+    Where a dedicated subsystem document exists, it is master.
+    Other documents point to it rather than restating mechanics. (CORE-006)
+  superseded_versions_go_to: archive
+  supreme_document: master_manifesto
+  line_structure: document_structure_standard
+errata_prefixes:
+  E: global vampire-era series, runs to E27, items still open
+  XL: cross-line errata, current series — never extend the E-series
+  local: Vagari runs its own E-1/E-2/E-3, document-scoped only
