@@ -1,0 +1,662 @@
+# FAFO Document Manifest
+# Resolves a stable key to the current document, version, and Drive ID.
+# Cite documents by KEY, not by filename. Filenames change; keys don't.
+
+
+meta:
+  version: "1.0"
+  updated: 2026-08-03
+  coverage: partial
+  scope: >
+    Active canon verified 2026-07-27 through 2026-07-29, plus governing
+    rulings and key references. Not yet a complete corpus inventory.
+  extend_by: >
+    Add or update an entry every time a document is created or version-bumped.
+    NOTE: a version bump creates a NEW Google Doc with a NEW drive_id, because
+    neither Claude nor Cowork can edit or rename a Drive file in place. Every
+    lock therefore invalidates this file until it is updated. Prefer a batch
+    sync at the end of a phase over a fix after every micro-edit.
+
+
+folders:
+  core:              1GXiyopwziRkAy2YPgUjM6hon2CSwq6bv
+  vampire:           1ZUegYXJWEmVMWUfFwAsy8QjTiACwGv7H
+  garou:             1C5DwjTItZD8pCS3LZ1IBXJKfitviIAy5
+  classic_hunters:   1k_Zaoxq0gIduhad7XRkb1XI_vWJ1N1v-
+  project_twilight:  1z1eeJKD7TUOfHThfT1ALv85PlBOwvrfu
+  equipment_combat:  13bhWOgdgQoU6t6jHXWbQAAISJb-YX1_J
+  mortal_baseline:   1V4oTVWsn381ZzgnYmqkGcpq3mlyMOYKf
+  character_creation: 1EGFMU0WDuN76hw_7H3oZS-7fMQCT9LBG
+  romani_gypsy:      1Jmsw1OPHL4W3tIwoCW1Fpm88bqYRqZ_3
+  templates:         1F_Dh7I_3Dt5NUYPXgXH5PJfHtetBUkk8
+  archive:           1gak4fIAHyGD8M2sYl5T7-jPdJvli7Ic7
+
+
+documents:
+
+
+  # --- GOVERNING ---
+  master_manifesto:
+    version: "1.2"
+    status: current
+    governing: true
+    supreme: true
+    ledger_lock: "1.90"
+    folder: core
+    drive_id: 1rfVyQl38yiyWZNBX7_jQKOfNo31-513Qm021-mbElbE
+    supersedes: ["1.1"]
+    note: >
+      Sits above every other document. Where any document conflicts with a
+      Core Law, the Core Law governs and the document is in error.
+
+
+  # --- GOVERNING STRUCTURE ---
+  document_structure_standard:
+    version: "1.0"
+    status: current
+    governing: true
+    ledger_lock: "1.88"
+    folder: core
+    drive_id: 1NNfKSlh6E-yBL6gxRNijxV3aTRJpEgCZqTTxH2gB8rg
+    master_of: [line_segment_skeleton]
+    note: >
+      Seven-part Line Segment Skeleton for all future Lines.
+      Existing completed lines are grandfathered.
+
+
+  # --- L0 MORTAL CHASSIS (Phase 1) ---
+  mortal_l0_chassis:
+    version: "1.3"
+    status: current
+    ledger_lock: "1.89"
+    folder: mortal_baseline
+    drive_id: 1TTbYE0DXYu2rQ0GH0D2RjvJdVT7R5J2EzW0GZ7Tw0_0
+    supersedes: ["1.2"]
+    master_of: [ability_generation, l0_hit_points, l0_feats, mortal_virtues]
+
+
+  mortal_legal_classes:
+    version: "1.1"
+    status: current
+    ledger_lock: "1.86"
+    folder: mortal_baseline
+    drive_id: 1HhcynLj0TUtJg-0vkD6W-hDFibY-uyyDmO3DQr6MgZc
+    supersedes: ["1.0"]
+    master_of: [approved_class_list, faction_training_packages]
+
+
+  civilian_career_packages:
+    version: "1.0"
+    status: current
+    ledger_lock: "1.87"
+    folder: mortal_baseline
+    drive_id: 1Jt6mnfFI9haRWC0Or8n0lQF4f4K9xfDJODrIhY1lrOA
+    master_of: [civilian_career_packages]
+    governed_by: mortal_legal_classes
+
+
+  mortal_baseline_skills:
+    version: "1.1"
+    status: current
+    folder: mortal_baseline
+    drive_id: 17TD541vMUv6LR8QhmmPemBIPN0eYahRd_X8WZixHASo
+    supersedes: ["1.0"]
+    master_of: [skill_mapping, computer_skill, driving, d20_modern_policy]
+
+
+  quickstart:
+    version: "3.0"
+    status: current
+    canon: true
+    folder: core
+    drive_id: 1Hl2oNNXISOC1o2Qhae6ayGGnfFeHiH16mY8ZzxQt3HM
+    supersedes: ["2.1"]
+    master_of: [mortal_lethality]
+    note: >
+      Supersedes Player Quickstart Guide v2.1, which taught 7/5/3 generation
+      and the Floating Engines and was flagged canon: false. Mortal lethality:
+      0 HP is Disabled, dying begins below 0, dead at negative CON. The vampire
+      Torpor-at-0 trigger does not apply to mortals.
+
+  # --- ECONOMY & EQUIPMENT ---
+  equipment_wealth_statement:
+    version: "1.1"
+    status: current
+    ledger_lock: "1.92"
+    folder: core
+    drive_id: 1nu99bZ9XZXu8yAuSmOc59ue17_EIPw9gmIsURKVRNrY
+    supersedes: ["1.0"]
+    master_of: [economy, conversion_rate, starting_wealth, item_availability]
+    note: "Master for the economy. Locked rate: 1 gp = $10 USD."
+
+
+  modern_combat:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: equipment_combat
+    drive_id: 1sQr8VBmLby_RCQ6yFqeQy4L1QbkeIkzrUPR7qkVHJ8k
+    master_of: [firearms_procedure, reloading, nonlethal, cover, armor_rule]
+
+
+  equipment_catalog:
+    version: "2.4"
+    status: current
+    ledger_lock: "1.91"
+    folder: equipment_combat
+    drive_id: 1flht-FUD5DT0IWtNNdhGWjAWJADPI92oc_xoIBFD3K4
+    supersedes: ["2.3", "2.2", "2.1", "2.0"]
+    governed_by: [modern_combat, equipment_wealth_statement]
+
+
+  # --- L1 VAMPIRE ---
+  virtues:
+    version: "1.4"
+    status: current
+    ledger_lock: "2.03"
+    folder: core
+    drive_id: 1HYR5-IEzu0hio_eIfQSRSdouZawHnvvOyWSAgnaFlsk
+    supersedes: ["1.3", "1.2", "1.1", "1.0"]
+    master_of: [virtues, humanity, willpower_pool, golconda, degeneration_check]
+
+
+  physical_states:
+    version: "1.2"
+    status: current
+    folder: core
+    drive_id: 1nIcdDu-FQPEzcKnu-XCKBGDAFoi6SucpHrk_Zx3wbu4
+    supersedes: ["1.1"]
+    master_of: [healing, aggravated_damage, torpor, staking, final_death]
+    amended_by:
+      - errata: xl_03
+        clause: >
+          Torpor trigger moves one step for characters in Frenzy only — they act
+          as though Disabled at exactly 0 HP, and Torpor arrives below 0.
+
+
+  frenzy:
+    version: "1.3"
+    status: current
+    folder: vampire
+    drive_id: 1peZzh8bi5YPhGDd_bTXMfHexgm30Y-Riq3JcpenVzcY
+    supersedes: ["1.2", "1.1", "1.0"]
+    governed_by: xl_03
+
+
+  rotschreck:
+    version: "1.1"
+    status: current
+    folder: vampire
+    drive_id: 1NOpP69oaHfTreIhdHw2g0UcoY1QhDbEVtVJPN3rm9Zw
+    supersedes: ["1.0"]
+
+
+  derangements:
+    version: "1.1"
+    status: current
+    folder: vampire
+    drive_id: 1gsNHcblGGduU0TsX7pUyeWgCz_EBW8-zCDRkHtw8P4g
+    supersedes: ["1.0"]
+
+
+  blood_bonds:
+    version: "1.2"
+    status: current
+    folder: vampire
+    drive_id: 1eXsVgN7K4Y5h9hK-yMzAu04KurEiU10JP_nPyaqhOt4
+    supersedes: ["1.1", "1.0"]
+    master_of: [vinculum, blood_bond]
+
+
+  aura_perception:
+    version: "1.1"
+    status: current
+    folder: core
+    drive_id: 1FFLiRBxV1OVJZGoYIeogTfBR6ZLOQyUemwjxL9Om3zA
+    supersedes: ["1.0"]
+    master_of: [aura_reading_framework]
+
+
+  # --- MORTAL SUPERNATURAL ---
+  hunters_hunted:
+    version: "1.1"
+    status: current
+    drive_id: 1224PMvT62E99ho3-EViQFrp37iYzHw1aPruGWqwbyEk
+    supersedes: ["hunters_hunted_numina_1.0"]
+    master_of: [numina, true_faith, psychic_phenomena, hedge_magic]
+
+
+  vagari_conversion:
+    version: "1.0"
+    status: current
+    folder: romani_gypsy
+    drive_id: 1HChuQJGs6kyaqb9KXnWHO_g6FoPBpSYLvHDquTiW_NQ
+    local_errata: [E-1, E-2, E-3]
+    note: runs a document-local E-series; not the global one
+
+
+  # --- GAROU (line complete) ---
+  garou_sept_offices:
+    version: "1.0"
+    status: current
+    gr: GR-069
+    folder: garou
+    drive_id: 1TNByqHmarBV6KWeGSP6P8WufOaBl8BVzz-EV-zAhTdc
+
+
+  garou_equipment:
+    version: "1.0"
+    status: current
+    gr: GR-072
+    folder: garou
+    drive_id: 1m4U__Wuh2aeHAniA9bdsDnbpzqdhGs16A_BYne4XvDg
+
+
+  garou_core_skills:
+    version: "1.0"
+    status: current
+    folder: garou
+    drive_id: 1OqooyuLzK23o-ab5izoq2z-CC68erg5_ffLYTwwa_z8
+
+
+  garou_frenzy_rage_master:
+    version: "1.0"
+    status: current
+    gr: GR-057
+    folder: garou
+    drive_id: 1fFpjMqirs5-wuJtoIclcHBUEV0jcjStZEeXkFGLdlXU
+    governed_by: xl_03
+
+
+  garou_consistency_pass:
+    version: "1.0"
+    status: current
+    gr: GR-075
+    folder: garou
+    drive_id: 1nDEYFe2kgnBCZWcZl4BM5-89YPl0qce-xt52e9eDGrg
+
+
+  # --- INQUISITION FRONT (un-gated 2026-07-29) ---
+  inquisition_core:
+    version: "1.3"
+    status: current
+    gr: GR-076
+    ledger_lock: "1.76"
+    folder: classic_hunters
+    ledger_lock: "2.00"
+    supersedes: ["1.2", "1.1", "1.0"]
+    master_of: [liturgical_items]
+    drive_id: 1X9iJvBTqb4b7gxvjkrVErNmfFRHgCT4lltkuHjWcZ6Q
+
+
+  true_faith_extension:
+    version: "1.1"
+    status: current
+    gr: GR-077
+    ledger_lock: "1.77"
+    folder: classic_hunters
+    supersedes: ["1.0"]
+    drive_id: 1lUsDVUEqfraVXnHqAcLyvn6UL645de3zHEuuLDkWWaY
+    governed_by: hunters_hunted
+
+
+  # --- CROSS-LINE ERRATA ---
+  xl_01_garou_conviction_floor:
+    version: "1.0"
+    status: current
+    ledger_lock: "1.78"
+    folder: classic_hunters
+    drive_id: 1jY-_Aoz4nr_JBPN-Kc32I19LmYJkYOuURwTdDTU6A_4
+    reference_copy: 1EFs0kI2u2pv580tsTO3Iq_flStNTxCLkwKlGy5mGLTs
+
+
+  xl_02_hunters_hunted_spp:
+    version: "1.0"
+    status: current
+    ledger_lock: "1.79"
+    folder: classic_hunters
+    drive_id: 1DWKE8sepNawr8BvZABG6ZJUZFcaoeoB0BQqMFLtPSL8
+
+
+  xl_03_frenzy_ferocity_stake:
+    version: "1.1"
+    status: current
+    ledger_lock: "1.80"
+    folder: core
+    drive_id: 1qQm8A_0WF0Zvznm-LBkdQDn7Ijv64KD-Im8g1ilnnt8
+    supersedes: ["1.0"]
+    governs: [frenzy, garou_frenzy_rage_master]
+    amends: [physical_states]
+    master_of: [ferocity, heart_staked_condition]
+
+
+  # --- PROJECT TWILIGHT ---
+  fbi_sad:
+    version: "1.0"
+    status: current
+    gr: GR-064
+    folder: project_twilight
+    drive_id: 1UjCozCbAprBYWB4GM65pI1P2HaW5R5S_DtFnMc7YLpw
+
+
+  # --- GOVERNING RULINGS ---
+  ruling_equipment_modern_combat:
+    date: 2026-07-19
+    status: locked
+    folder: core
+    drive_id: 1QWKxaCmHbaJUE5yg7Wnz8hhZ1ok91lwOtnL8HKAXgTU
+    ids: [EQ-001, EQ-002, EQ-003]
+
+
+  ruling_backgrounds_trait_mapping:
+    date: 2026-07-19
+    status: locked
+    folder: core
+    drive_id: 1OQ5RFwIrzEF_BA7YtbH_fTEp_5Q3G1kVZEdRGJbv0lI
+    ids: [BG-001]
+
+
+  # --- STATE DOCUMENTS ---
+  ledger:
+    version: "2.12"
+    status: current
+    folder: core
+    drive_id: 15NRrdLGBCdKv7tEstiQr2ITn2ndZbyApfGXvxU1y9L4
+    warning: >
+      Delta document. Carries forward all prior content by reference.
+      The last ledger holding the full errata registry is v1.15
+      (1_Auj_RUsraqF8ZwMJEg1d_8vLlWq9C3IKYXXb3VQh4U).
+      The full E1-E27 table is in v1.12
+      (1auCfWeFqPP08OcPlBn6xOrEx9cea6iSFKvKEUS7H1F8).
+
+
+  current_state_summary:
+    version: "1.75"
+    status: demoted
+    canon: false
+    folder: archive
+    drive_id: 1p_xcUnUOXrQAiVk-wyXWuE6c0zZUXoZO0rexBhptjm4
+    demoted_at_ledger: "2.11"
+    note: >
+      DEMOTED 2026-07-31. A secondary progress index. Do not cite it for
+      what exists or what is current. NOT replaced — currency is the Ledger
+      tip plus this manifest. FAFO does not maintain a narrative progress
+      summary; any document that summarizes project state outside those two
+      is a secondary index and non-canon by construction.
+
+  phantom_registry:
+    version: "0.9"
+    status: current
+    folder: core
+    drive_id: 1zvDXRsI3yQbAjZeEo0FgcTUFpvoKrA80NV6NSZsmgsI
+    warning: >
+      Delta document. PV-007 and PV-008 were LOCKED in v0.5
+      (1k0EuJ8an9oRQvZFvtohLF0pzTvLhXPk18tDUA7SVdxM), not in v0.9.
+
+
+  # --- LEGACY / NOT CANON ---
+  vtm_backgrounds:
+    version: "2.0"
+    status: legacy
+    canon: false
+    folder: archive
+    drive_id: 1jOjwROBAw75Is06-p4Wd2zw14KYfO_TAMhbYK03mUYI
+    note: idea-mine only; the Background system is retired by BG-001
+
+  # --- ADDED v0.7: documents that existed but were invisible to the manifest ---
+  spp_advancement_table:
+    version: "1.3"
+    status: current
+    folder: core
+    drive_id: 1cR66Y-jYZtuL6Dqm5r8__j4VciJb2Ix51yf2srUOqbI
+    supersedes: ["1.2", "1.1", "1.0"]
+    master_of: [spp_costs, dot_costs, tier_floors, spp_banking]
+    note: "Tier floors are the sole dot gate. Advancement tracks retired by C3."
+
+  ghoul_template:
+    version: "1.1.3"
+    status: closed
+    ledger_lock: "2.07"
+    folder: templates
+    drive_id: 1J8BF2NMzoJ1hOCKIxRFj3UyvoH_y35avuTiSe3HDM6o
+    supersedes: ["1.1.2", "1.1.1", "1.1", "1.0"]
+    governed_by: [physical_states, blood_bonds]
+    note: >
+      CLOSED. Aggravated recovery is push-through only at the Line Master price
+      (3 HP/week, 1 permanent Willpower/week); no Torpor route, no at-rest
+      recovery. Blood Bonds v1.2 governs section 6 in full.
+
+  society_of_leopold:
+    version: "1.2"
+    status: current
+    ledger_lock: "2.08"
+    folder: classic_hunters
+    drive_id: 1rIAIr54s-f7S3DxymXS4KVcd6fKgh9JxzkTDVf84_Z4
+    supersedes: ["1.1", "1.0"]
+    governed_by: [inquisition_core, true_faith_extension]
+    note: "GAP-13 resolved. Liturgical items are owned by inquisition_core section 9."
+
+  audit_verdict_rule:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1X5UajHOZu3U1BVA3N4wJZrcGB4aZkanI80XWb2a2ZjA
+    master_of: [audit_verdicts, stopping_rule]
+
+  pre_draft_registry_pass:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1hVSLggUXppf4vnnwBXFDyFhWsSojY1A6nLTBFaWRnvM
+    master_of: [pre_draft_gate]
+
+  terminology_index:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1tlT2QzDWKyPef16LGwEDfwFK-E5_HEdBDDSRHZDoemY
+    master_of: [terminology]
+
+  line_master_ownership_rule:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1wt1SXxUgWPVnaHW6HbzyP-6RVOihn0H3PsQUtWR_eGQ
+    master_of: [line_master_ownership]
+
+  capacity_pause_protocol:
+    version: "1.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 1-WBXESXX8gC5U5V6I4LPr1ICY6TXe4Sj6mLLGsU28b4
+    master_of: [capacity_pause]
+
+  # --- ADDED v0.8: documents found by the Core/ classification sweep ---
+  merits_and_flaws:
+    version: "1.1"
+    status: current
+    ledger_lock: "2.09"
+    folder: core
+    drive_id: 1B3drwhUpNVLiwv7FCzFV6Hn66-kiU8NtIFgQ8mXN-rc
+    supersedes: ["1.0"]
+    master_of: [merits, flaws, merit_point_pool]
+    note: >
+      Faith's Spark removed at v1.1 — True Faith is storyteller_award_only
+      and is not purchasable here or anywhere.
+
+  core_conversion_reference:
+    version: "1.3"
+    status: current
+    ledger_lock: "2.10"
+    folder: core
+    drive_id: 1C7UARU6OhdV1jyPmrEcTWzVMUzM9zCtXtgacBQ62rpM
+    supersedes: ["1.2", "1.1"]
+    master_of: [rejection_register, risk_matrix, conversion_formulas]
+    note: "Process pack. Creates no canon. Holds the recorded why behind rejected alternatives."
+
+  conversion_engine_architecture:
+    version: "2.0"
+    status: current
+    governing: true
+    folder: core
+    drive_id: 12xAcLB2IWmhVHYCnFpR92c3_1ilBq2k_Ll01ymzbe-A
+    master_of: [three_laws_of_layers, layered_rebuild_charter]
+    note: >
+      Layered Rebuild Charter. Its planned Engine_L0/L1/L2/LX files were
+      built under other names; the EN-001/002/003 ledger section it commits
+      to has never been added.
+
+  conversion_engine_static_reference:
+    version: "1.3.1"
+    status: current
+    folder: core
+    drive_id: 16DvUujhLou7sGwuf1ng1tmIyhGQtDxBwzHg7jHvt9Ds
+    note: >
+      Ruled LIVE 2026-07-31. conversion_engine_architecture v2.0
+      reclassified it as legacy, but that never propagated — blood_bonds
+      v1.2 and merits_and_flaws both cite it as their engine. Do not demote
+      while current documents depend on it.
+
+  gargoyle_template:
+    version: "1.1"
+    status: current
+    ledger_lock: "2.12"
+    folder: templates
+    drive_id: 1rmgtxvd-Do0A57TKrgeFPUyEer-NLh8eUJUUm3THnI4
+    supersedes: ["1.0"]
+    governed_by: [vampire_template_base, blood_bonds, virtues, protean]
+    master_of: [visceratika, loyalty_conditioning]
+    note: >
+      Visceratika is resident here and has no separate document. All raw
+      attribute adjustments struck under C2 at v1.1.
+
+  protean:
+    version: "1.1"
+    status: current
+    ledger_lock: "2.13"
+    folder: vampire
+    drive_id: 1hRApeJHM2r0iKFdG8TC0adEZVW2KSZPH2t_hcCd_ooU
+    supersedes: ["1.0"]
+    master_of: [earth_meld, form_of_the_beast, feral_claws]
+    note: >
+      Earth Meld at dot 3 is depended on by gargoyle_template section 9
+      (Visceratika 4), which states deltas against it rather than restating
+      the mechanic. Its Ethereal state, forced emergence, Tremorsense range,
+      natural-surface restriction and zero Blood Pool drain must survive any
+      future edit or the Gargoyle entry breaks.
+
+  garou_passive_traits:
+    version: "1.1"
+    status: current
+    folder: garou
+    drive_id: 1sujPLZFTFalT56YHKBWTKEHJlYmBQm3x3kPwgSqLYvI
+    supersedes: ["1.0"]
+    master_of: [regeneration, silver_interaction]
+    note: >
+      This is GR-045. invariants.yaml cites silver.source as GR-045 by label
+      with no version or drive_id; this key is what that label resolves to.
+
+  garou_rank_4_5_design_brief:
+    version: "1.0"
+    status: current
+    folder: garou
+    drive_id: 1GkDGBoPlAIohkoW3NYHhp2f6Fp0TFKT5kIC4Rl0W5F4
+    note: >
+      This is GR-048. A second file of the same name existed with two GR-028
+      cross-references missing; that copy is archived. Filename says
+      "Foundation," the document titles itself a Design Brief.
+
+  vampire_l1_vector_c5:
+    version: "1.0"
+    status: current
+    folder: core
+    drive_id: 19Z3FKXgIqhfKaoFhfI9SsSHL2palmXKCFDaeRkexvak
+    master_of: [awareness_and_the_veil]
+    note: "Cited by GR-048's baseline invariance table. Vampire content filed in Core/."
+
+  diocesan_investigators:
+    version: "1.0"
+    status: current
+    ledger_lock: "2.00"
+    folder: classic_hunters
+    drive_id: 1QdVc8p9woZ2gRed4h5I6951mdltIaLaMu1krJoYeP9M
+    governed_by: [inquisition_core, true_faith_extension]
+
+  ruling_wp_004_nature_demeanor:
+    date: "2026-07-19"
+    status: locked
+    folder: core
+    drive_id: 1K4_eqoE2q-LncddfK5vxrliCFShyyEWblgvjr_sHjQI
+    ids: [WP-004]
+    amended_by: [mortal_l0_chassis, virtues]
+    note: >
+      Nature no longer governs Willpower recovery. Amended by L0 Chassis
+      v1.3 (ledger 1.89) and Virtues v1.4 (ledger 2.03). Retained as the
+      record of what was decided; rulings are not archived for being amended.
+
+  kindred_rebirth:
+    version: "1.1.1"
+    status: current
+    ledger_lock: "2.15"
+    folder: vampire
+    drive_id: 1plD2-gphclVmlaUMheXJtBdOT40w0V8mo6hVqqprxl4
+    supersedes: ["1.1", "1.0"]
+    governed_by: [universal_rebirth_framework, virtues]
+    master_of: [true_mortality, true_death_as_release]
+    note: >
+      Reference implementation of universal_rebirth_framework for the Kindred
+      line. Golconda is NOT owned here — virtues v1.4 is master and this
+      document points to it.
+
+  universal_rebirth_framework:
+    version: "1.1"
+    status: current
+    governing: true
+    ledger_lock: "2.16"
+    folder: vampire
+    drive_id: 1HE8hI1KUzzPm96fm8eO-NDVPrJBnyBB7UBb_aNZpy2o
+    supersedes: ["1.0"]
+    master_of: [rebirth_taxonomy, rebirth_requirements_grammar, rebirth_permanence]
+    note: >
+      Cross-line master for Rebirth PRINCIPLES only; line documents own their
+      paths and mechanics. Carries three LOCKED rulings — one-way permanence
+      (section 5), Release as a player right (section 6), retirement as the
+      default after Return (section 7). Mummy resurrection is explicitly
+      OUTSIDE this framework: the Amenti cycle is the condition itself, not
+      an exit from one, and mummy_template governs it entirely.
+
+# --- COVERAGE HONESTY (added v0.7, updated v0.8) ---
+# The manifest is the source of truth for whether a document exists, but its
+# coverage is PARTIAL. Silence here is NOT evidence a document was never
+# written. Until coverage is complete, confirm absence against the Ledger too.
+existence_rule:
+  manifest_is_authoritative_for: [version, drive_id, folder, status]
+  manifest_silence_proves_nonexistence: false
+  on_silence: "check the Ledger before concluding a document does not exist"
+  known_absent:
+    note: >
+      Real, locked documents not yet carrying a manifest key as of v1.0.
+      Ten remain, down from fifteen at v0.7. Their Drive IDs have not
+      been re-verified and are deliberately omitted rather than asserted.
+    documents:
+      - vampire_template_base
+      - degeneration
+      - discipline_chains_core_five
+      - thaumaturgy_subsystem
+      - path_of_blood
+      - movement_of_the_mind
+      - lure_of_flames
+      - path_of_conjuring
+      - clan_documents_all_seven
+      - mummy_template
+  known_stale:
+    note: >
+      Cleared at v0.8. Both prior entries — inquisition_core and
+      true_faith_extension — were verified against Drive and corrected to
+      1.3 and 1.1 respectively.
+    entries: {}
